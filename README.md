@@ -12,3 +12,8 @@ Contains index.html and static directory with javascript and css for completing 
 
 ## How to use
 ![](Images/howto.gif)
+
+The site has multiple filters and all are usable; however, the current dataset is not very large, so entering many criteria in the search bars may result in a query with no results. The image below shows the result for a query with no criteria in the search bars.
+
+![](nofilter.png)
+
