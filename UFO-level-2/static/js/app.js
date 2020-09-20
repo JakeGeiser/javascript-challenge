@@ -16,10 +16,27 @@ function runQuery() {
 
     // read date filter
     var dateElement = d3.select("#datetime");
-    console.log(dateElement);
-
     var date = dateElement.property("value");
     console.log(date);
+
+    // read city filter
+    var cityElement = d3.select("#city");
+    var city = cityElement.property("value");
+    console.log(city)
+    // read state filter
+    var stateElement = d3.select("#state");
+    var state = stateElement.property("value");
+    console.log(state);
+
+    // read country filter
+    var countryElement = d3.select("#country");
+    var country = countryElement.property("value");
+    console.log(country);
+
+    // read shape filter
+    var shapeElement = d3.select("#shape");
+    var shape = shapeElement.property("value");
+    console.log(shape);
 
     // check if search is empty
     if (date == "") {
