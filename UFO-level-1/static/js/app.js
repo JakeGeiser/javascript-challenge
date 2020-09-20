@@ -20,5 +20,9 @@ function runQuery() {
 
     var date = dateElement.property("value");
     console.log(date);
+
+    // filter the specified date
+    var filteredData = data.filter(doc => doc.datetime == date);
+    console.log(filteredData)
 }
 
