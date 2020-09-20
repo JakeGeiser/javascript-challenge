@@ -21,8 +21,18 @@ function runQuery() {
     var date = dateElement.property("value");
     console.log(date);
 
-    // filter the specified date
+    // check if seach is empty
+    if (date == "") {
+        var filteredData = data;
+    }
+    else {
+    // else filter the specified date
     var filteredData = data.filter(doc => doc.datetime == date);
     console.log(filteredData)
+    }
+    // select table body
+    tableBody = d3.select("tbody");
+    // remove old table rows if present
+    tableBody.remove("tr");
 }
 
