@@ -26,13 +26,26 @@ function runQuery() {
         var filteredData = data;
     }
     else {
-    // else filter the specified date
-    var filteredData = data.filter(doc => doc.datetime == date);
-    console.log(filteredData)
+        // else filter the specified date
+        var filteredData = data.filter(doc => doc.datetime == date);
+        console.log(filteredData)
     }
     // select table body
     tableBody = d3.select("tbody");
     // remove old table rows if present
-    tableBody.remove("tr");
+    tableBody.selectAll("tr").remove();
+
+    filteredData.forEach((sighting) => {
+        // append a new row
+        var newRow = tableBody.append("tr");
+
+        Object.entries(sighting).forEach(([key,value]) => {
+            // add data to the hew row
+            var newData = newRow.append("td");
+            newData.text(value);
+        
+       
+        });
+    });
 }
 
