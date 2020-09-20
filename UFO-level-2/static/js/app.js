@@ -38,14 +38,17 @@ function runQuery() {
     var shape = shapeElement.property("value");
     console.log(shape);
 
-    // check if search is empty
-    if (date == "") {
-        var filteredData = data;
-    }
-    else {
-        // else filter the specified date
-        var filteredData = data.filter(doc => doc.datetime == date);
-        console.log(filteredData)
+    // fucntion for filtering with
+    function formFilter(DATA,KEY,QUERY){
+        // check if search is empty
+        if (QUERY == "") {
+            var filteredData = DATA;
+        }
+        else {
+            // else filter the specified value
+            var filteredData = DATA.filter(doc => doc.KEY == QUERY);
+            console.log(filteredData)
+        }
     }
     // select table body
     tableBody = d3.select("tbody");
