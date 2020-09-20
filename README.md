@@ -9,3 +9,6 @@ Contains index.html and static directory with javascript and css for completing 
 
 ## UFO-level-2 directory
 Contains index.html and static directory with javascript and css for completing the requred+optional portion of the challenge. Files inside successfully run a site to filter UFO sightings with multiple search boxes(Date, city, state, country, and shape).
+
+## How to use
+![](Images/howto.gif)
