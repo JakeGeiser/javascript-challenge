@@ -39,12 +39,11 @@ function runQuery() {
         // append a new row
         var newRow = tableBody.append("tr");
 
+        // loop through each sighting as key,value pair
         Object.entries(sighting).forEach(([key,value]) => {
             // add data to the hew row
             var newData = newRow.append("td");
             newData.text(value);
-        
-       
         });
     });
 }
