@@ -21,7 +21,7 @@ function runQuery() {
     var date = dateElement.property("value");
     console.log(date);
 
-    // check if seach is empty
+    // check if search is empty
     if (date == "") {
         var filteredData = data;
     }
