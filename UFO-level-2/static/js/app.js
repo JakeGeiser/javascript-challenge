@@ -39,7 +39,7 @@ function runQuery() {
     console.log(shapeIn);
 
     // fucntion for filtering with
-    function formFilter(DATA,KEY,QUERY){
+    function formFilter(DATA,KEY,QUERY) {
         // check if search is empty
         if (QUERY == "") {
             var filteredData = DATA;
@@ -47,6 +47,7 @@ function runQuery() {
         else {
             // else filter the specified value
             var filteredData = DATA.filter(doc => doc[KEY] == QUERY);
+            console.log(filteredData);
         }
         console.log("function ran");
         return filteredData;
@@ -54,15 +55,16 @@ function runQuery() {
 
     // Filter the data
     /// Filter out date
-    var filterDate = formFilter(tableData,datetime,dateIn);
+    var filterDate = formFilter(tableData,"datetime",dateIn);
     /// Filter out city
-    var filterCity = formFilter(filterDate,city,cityIn);
-    /// Filter out date
-    var filterState = formFilter(filterCity,state,stateIn);
-    /// Filter out date
-    var filterCountry = formFilter(filterState,country,countryIn);
-    /// Filter out date
-    var filterAll = formFilter(filterCountry,shape,shapeIn);
+    var filterCity = formFilter(filterDate,"city",cityIn);
+    /// Filter out state
+    var filterState = formFilter(filterCity,"state",stateIn);
+    /// Filter out country
+    var filterCountry = formFilter(filterState,"country",countryIn);
+    /// Filter out shape
+    var filterAll = formFilter(filterCountry,"shape",shapeIn);
+
     // select table body
     tableBody = d3.select("tbody");
     // remove old table rows if present
