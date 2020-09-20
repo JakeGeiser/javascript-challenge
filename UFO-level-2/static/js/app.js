@@ -16,27 +16,27 @@ function runQuery() {
 
     // read date filter
     var dateElement = d3.select("#datetime");
-    var date = dateElement.property("value");
-    console.log(date);
+    var dateIn = dateElement.property("value");
+    console.log(dateIn);
 
     // read city filter
     var cityElement = d3.select("#city");
-    var city = cityElement.property("value");
-    console.log(city)
+    var cityIn = cityElement.property("value");
+    console.log(cityIn)
     // read state filter
     var stateElement = d3.select("#state");
-    var state = stateElement.property("value");
-    console.log(state);
+    var stateIn = stateElement.property("value");
+    console.log(stateIn);
 
     // read country filter
     var countryElement = d3.select("#country");
-    var country = countryElement.property("value");
-    console.log(country);
+    var countryIn = countryElement.property("value");
+    console.log(countryIn);
 
     // read shape filter
     var shapeElement = d3.select("#shape");
-    var shape = shapeElement.property("value");
-    console.log(shape);
+    var shapeIn = shapeElement.property("value");
+    console.log(shapeIn);
 
     // fucntion for filtering with
     function formFilter(DATA,KEY,QUERY){
@@ -46,25 +46,36 @@ function runQuery() {
         }
         else {
             // else filter the specified value
-            var filteredData = DATA.filter(doc => doc.KEY == QUERY);
-            console.log(filteredData)
+            var filteredData = DATA.filter(doc => doc[KEY] == QUERY);
         }
+        console.log("function ran");
+        return filteredData;
     }
+
+    // Filter the data
+    /// Filter out date
+    var filterDate = formFilter(tableData,datetime,dateIn);
+    /// Filter out city
+    var filterCity = formFilter(filterDate,city,cityIn);
+    /// Filter out date
+    var filterState = formFilter(filterCity,state,stateIn);
+    /// Filter out date
+    var filterCountry = formFilter(filterState,country,countryIn);
+    /// Filter out date
+    var filterAll = formFilter(filterCountry,shape,shapeIn);
     // select table body
     tableBody = d3.select("tbody");
     // remove old table rows if present
     tableBody.selectAll("tr").remove();
 
-    filteredData.forEach((sighting) => {
+    filterAll.forEach((sighting) => {
         // append a new row
         var newRow = tableBody.append("tr");
 
         Object.entries(sighting).forEach(([key,value]) => {
-            // add data to the hew row
+            // add data to the new row
             var newData = newRow.append("td");
             newData.text(value);
-        
-       
         });
     });
 }
